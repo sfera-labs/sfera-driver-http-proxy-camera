@@ -9,8 +9,8 @@ import org.eclipse.jetty.http.HttpField;
 
 import cc.sferalabs.sfera.core.Configuration;
 import cc.sferalabs.sfera.drivers.Driver;
-import cc.sferalabs.sfera.http.HttpServer;
-import cc.sferalabs.sfera.http.HttpServerException;
+import cc.sferalabs.sfera.web.WebServer;
+import cc.sferalabs.sfera.web.WebServerException;
 
 public class HttpProxyCamera extends Driver {
 
@@ -32,7 +32,7 @@ public class HttpProxyCamera extends Driver {
 			String camPath = "/camera/" + getId();
 			String realm = getRealm(url);
 			proxy = new CameraProxyServletHolder(realm, user, password, url, camPath);
-			HttpServer.addServlet(proxy, camPath + "/*");
+			WebServer.addServlet(proxy, camPath + "/*");
 			return true;
 
 		} catch (Exception e) {
@@ -86,8 +86,8 @@ public class HttpProxyCamera extends Driver {
 	protected void onQuit() {
 		if (proxy != null) {
 			try {
-				HttpServer.removeServlet(proxy);
-			} catch (HttpServerException e) {
+				WebServer.removeServlet(proxy);
+			} catch (WebServerException e) {
 				log.error("Error removing camera servlet", e);
 			}
 		}
