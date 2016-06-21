@@ -7,7 +7,7 @@
 	<version>1.0.0</version>
 
 	<name>HttpProxyCamera</name>
-	<description>A simple proxy for HTTP cameras</description>
+	<description>A simple proxy for IP cameras</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,7 +15,22 @@
 		<sfera-version>0.1.0</sfera-version>
 	</properties>
 
+	<distributionManagement>
+		<repository>
+			<id>sferalabs.cc</id>
+			<url>scp://sferalabs.cc/var/www/sfera.sferalabs/mvn-repo/</url>
+		</repository>
+	</distributionManagement>
+
 	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>2.3</version>
+			</extension>
+		</extensions>
+
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -90,6 +105,12 @@
 						</taglet>
 						<taglet>
 							<tagletClass>cc.sferalabs.sfera.doc.taglets.EventIdTaglet</tagletClass>
+						</taglet>
+						<taglet>
+							<tagletClass>cc.sferalabs.sfera.doc.taglets.EventValueTaglet</tagletClass>
+						</taglet>
+						<taglet>
+							<tagletClass>cc.sferalabs.sfera.doc.taglets.EventSimpleValueTaglet</tagletClass>
 						</taglet>
 					</taglets>
 					<tagletArtifact>

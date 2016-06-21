@@ -12,6 +12,13 @@ import cc.sferalabs.sfera.drivers.Driver;
 import cc.sferalabs.sfera.web.WebServer;
 import cc.sferalabs.sfera.web.WebServerException;
 
+/**
+ *
+ * @author Giampiero Baggiani
+ *
+ * @version 1.0.0
+ *
+ */
 public class HttpProxyCamera extends Driver {
 
 	private CameraProxyServletHolder proxy;

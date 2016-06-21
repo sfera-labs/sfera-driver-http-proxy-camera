@@ -1,0 +1,27 @@
+<HTML>
+	<body>
+		Driver for the integration of IP cameras with MJPG video stream.
+		<p>
+		The driver creates a proxy to make the video stream from the camera available on Sfera's HTTP(S) server at the path /camera/&lt;driver_instance_id&gt;.<br />
+		Support for HTTP basic access authentication is provided.
+		<p>
+		This driver can be used to show the video stream of a camera on a Web interface provided by the Web App.<br />
+		To this end, use an image component and set the source attribute to the camera's path.<br />
+		For instance, assuming the camera driver has ID "my_cam":
+		<p>
+		<code>
+		    &lt;image height="200" width="300" source="camera/my_cam" x="10" y="10" /&gt;
+		</code>
+		
+		@author Giampiero Baggiani
+		@sfera.config type
+			cc.sferalabs.sfera.drivers.cameras.http_proxy.HttpProxyCamera
+		@sfera.config url
+			Complete URL of the camera's video stream
+		@sfera.config user
+			if authentication is required to access the video stream, specify the username here
+		@sfera.config password
+			if authentication is required to access the video stream, specify the password here
+
+	</body>
+</HTML>
